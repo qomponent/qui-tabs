@@ -1,0 +1,31 @@
+{
+  "name": "@qomponent/qui-tabs",
+  "version": "999-SNAPSHOT",
+  "description": "A Lit-based web component to display things in dynamic tabs",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Phillip Kruger <phillip.kruger@phillip-kruger.com> (https://www.phillip-kruger.com)",
+  "homepage": "https://quarkus.io",
+  "license": "Apache-2.0",
+  "main": "qui-tabs.js",
+  "module": "qui-tabs.js",
+  "type": "module",
+  "keywords": [
+    "Quarkus",
+    "qomponent",
+    "web-components",
+    "tabs",
+    "dynamic tabs"
+  ],
+  "scripts": {
+    "start": "web-dev-server --config web-dev-server.config.js"
+  },
+  "dependencies": {
+    "lit": "~3.2.0"
+  },
+  "devDependencies": {
+    "@web/dev-server": "^0.4.4",
+    "es-dev-server": "^1.55.1"
+  }
+}
