@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabs Web Component Demo</title>
+    <script type="module" src="./qui-tabs.js"></script>
+    <style>
+      .row {
+        display: flex;
+        align-items: baseline;
+      }
+      .col {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Tabs</h1>
+
+    <qui-tabs id="tabs">
+      <div slot="tab-content" key="home" name="Home">Welcome to Home</div>
+      <div slot="tab-content" key="profile" name="Profile">User Profile Information</div>
+      <div slot="tab-content" key="settings" name="Settings">Settings Panel</div>
+    </qui-tabs>
+
+    <button onclick="addNewTab()">Add New Tab</button>
+    <button onclick="selectTab('profile')">Select Profile Tab</button>
+
+    <h3>Selected Tab:</h3>
+    <p id="selected-tab">None</p>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+          const tabsElement = document.getElementById("tabs");
+
+          // Listen for tab selection events
+          tabsElement.addEventListener("tab-selected", (event) => {
+              document.getElementById("selected-tab").textContent = 
+                  `Key: ${event.detail.key}`;
+          });
+      });
+
+      function addNewTab() {
+          const tabsElement = document.getElementById("tabs");
+          const newTabId = `tab-${tabsElement.children.length + 1}`;
+          
+          const newTab = document.createElement("div");
+          newTab.setAttribute("slot", "tab-content");
+          newTab.setAttribute("key", newTabId);
+          newTab.setAttribute("name", `Tab ${tabsElement.children.length + 1}`);
+          newTab.textContent = `Content of ${newTabId}`;
+          
+          tabsElement.appendChild(newTab);
+      }
+
+      function selectTab(key) {
+          const tabsElement = document.getElementById("tabs");
+          tabsElement.selectTab(key);
+      }
+    </script>
+  </body>
+</html>
